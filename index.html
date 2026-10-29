@@ -67,8 +67,8 @@ h2{font-size:clamp(22px,3.4vw,30px);line-height:1.35;margin:4px 0 10px}
 .tabs button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 18px;font-weight:700;font-size:14px;cursor:pointer;color:var(--sub)}
 .tabs button.on{background:var(--hot);color:#fff;border-color:var(--hot)}
 .panel{display:none}
-.panel.on{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:start}
-.poster{margin:0}.poster img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#e5def9;aspect-ratio:4/5;object-fit:cover}.poster figcaption{font-size:12px;color:var(--sub);margin-top:6px}
+.panel.on{display:block}
+.poster{margin:20px 0 0;max-width:420px}.poster img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#e5def9;aspect-ratio:4/5;object-fit:cover}.poster figcaption{font-size:12px;color:var(--sub);margin-top:6px}
 
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;font-weight:700}
@@ -103,7 +103,7 @@ details[open] summary::after{content:"－"}
 details p{margin:0 0 14px;color:var(--sub)}
 footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13px}
 @media(max-width:820px){
- .panel.on{grid-template-columns:1fr}.poster{max-width:320px}
+ .poster{max-width:340px}
  .facts{grid-template-columns:1fr 1fr}
  .grid{grid-template-columns:1fr 1fr}
  .feat{grid-template-columns:1fr}.feat .thumb{min-height:0;aspect-ratio:16/9}
@@ -136,6 +136,37 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
 .slot{border-color:#b9a4ff}
 .tl div::before{background:linear-gradient(90deg,#19e6ff,#7b3cff,#ff2fd0)}
 .tl div::after{background:linear-gradient(135deg,#7b3cff,#ff2fd0)}
+
+/* 手機版字級放大 */
+@media(max-width:520px){
+ body{font-size:17px;line-height:1.75}
+ h2{font-size:25px}
+ .hero p.lead{font-size:17.5px}
+ .hero .tag{font-size:14px}
+ .fact b{font-size:14px}.fact span{font-size:18px}
+ nav a{font-size:16px;padding:14px 13px}
+ .intro{font-size:17px}
+ .pn{font-size:14px}
+ .note{font-size:15px}
+ .warn{font-size:16px}
+ .slot b{font-size:17px}.slot small{font-size:15px}.slot .st{font-size:12.5px}
+ .card .kicker{font-size:14px}.card h3{font-size:18px}
+ .feat h3{font-size:21px}.feat p{font-size:16.5px}
+ .btn{font-size:16px}
+ .tabs button{font-size:16px;padding:9px 18px}
+ .chip{font-size:17px;padding:10px 16px}
+ .box h3,.box p{font-size:17px}
+ .tbl{font-size:16px}.tbl th{font-size:15.5px}
+ .tl b{font-size:17px}.tl span{font-size:15px}
+ summary{font-size:17.5px}details p{font-size:16.5px}
+ footer{font-size:14.5px}
+}
+
+/* 卡司名單置中 */
+.tabs{justify-content:center}
+.panel .chips{justify-content:center}
+.panel .note{text-align:center}
+.poster{margin:20px auto 0}
 </style>
 </head>
 <body>
@@ -244,10 +275,6 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
   <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a17b9c-41c9-7193-9927-385759e97435.png?w=1024&h=1280" alt="2026 MMA Day2卡司海報" loading="lazy" onerror="this.parentNode.remove()"></figure>
  </div>
 
- <div style="max-width:720px;margin:24px 0 0">
-  <div class="video"><iframe src="https://www.youtube.com/embed/U02IYEmB-Xk" title="2026 MMA倒數一個月! 「26組卡司爭霸」ATEEZ.aespa.CORTIS都來了" loading="lazy" allowfullscreen></iframe></div>
-  <p class="vcap">2026 MMA倒數一個月! 「26組卡司爭霸」ATEEZ.aespa.CORTIS都來了</p>
- </div>
  <h3 style="margin:26px 0 6px">藝人焦點系列（每日一則，10/29至11/3）</h3>
  <div class="grid">
   <div class="slot"><span class="st">10/29</span><b>I.O.I合體：等了9年的回憶殺</b><small>有生之年系列，國民女團《MMA 2026》重聚</small></div>
@@ -326,7 +353,7 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
  </table></div>
  <p class="note">第41屆Golden Disc Awards將於2027年1月9日至10日在越南河內舉行。來源：<a href="https://news.tvbs.com.tw/entertainment/jk-pop/4035007" target="_blank" rel="noopener">TVBS新聞網</a>，文章更新日期2026年10月27日。</p>
  <div class="grid" style="margin-top:20px">
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/3213424" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/legacy/img/upload/2026/05/26/20260526095118-dbb27aa0.jpg?w=800&h=450" alt="2026 AAA最新卡司名單》TWICE子瑜加入主持群！票價、售票時程、搶票攻略總整理" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 AAA最新卡司名單》TWICE子瑜加入主持群！票價、售票時程、搶票攻略總整理</h3></div></a>
+  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/3213424" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a1861e-5c06-71a2-8a3b-632066d49934.jpg?w=1067&h=600&t=16x9&c=0,0,1200,675&w=800&h=450" alt="2026 AAA最新卡司名單》TWICE子瑜加入主持群！票價、售票時程、搶票攻略總整理" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 AAA最新卡司名單》TWICE子瑜加入主持群！票價、售票時程、搶票攻略總整理</h3></div></a>
   <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/4038509" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a1572b-93c6-7022-bf0a-0ca9fcc5db71.jpg?t=16x9&c=0,0,1200,675&w=1200&h=675" alt="2026 MAMA卡司名單公布！BIGBANG確定登台，入圍名單與直播投票一次看" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 MAMA卡司名單公布！BIGBANG確定登台，入圍名單與直播投票一次看</h3></div></a>
   <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/4005497" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/019fefa9-f9bc-73f4-aba0-d2aced02fa73.png?t=16x9&c=0,1,1338,754&w=1200&h=675" alt="2026 SBS歌謠大戰SUMMER／完整回放上架CP+　重現K-POP舞台魅力" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 SBS歌謠大戰SUMMER／完整回放上架CP+　重現K-POP舞台魅力</h3></div></a>
  </div>
