@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <base target="_top">
-<title>2026 MMA頒獎典禮專題｜卡司、投票、直播與年末頒獎典禮總整理</title>
+<title>2026 MMA頒獎典禮｜卡司、投票、直播一次掌握</title>
 <meta name="description" content="2026第18屆MMA頒獎典禮11月14日至15日首度連辦兩天，26組卡司、Global TOP10投票、TVBS 42台與CATCHPLAY TV直播時間、年末K-pop頒獎典禮時間表一頁看懂。">
 <!-- 待補：發燒網正式網址 -->
 <link rel="canonical" href="https://待補發燒網正式網址">
-<meta property="og:title" content="2026 MMA頒獎典禮專題｜卡司、投票、直播與年末頒獎典禮總整理">
+<meta property="og:title" content="2026 MMA頒獎典禮｜卡司、投票、直播一次掌握">
 <meta property="og:description" content="MMA 2026首度連辦兩天，卡司、投票、直播一頁看懂。">
 <meta property="og:url" content="https://待補發燒網正式網址">
 <meta property="og:type" content="website">
@@ -20,10 +20,14 @@ body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",syst
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 /* hero */
-.hero{background:linear-gradient(135deg,#12082e 0%,#3a1a8f 55%,#ff3d8b 120%);color:#fff;padding:56px 0 48px}
+.hero{position:relative;overflow:hidden;color:#fff;padding:64px 0 52px;background:radial-gradient(ellipse 60% 80% at 82% 30%,rgba(255,61,200,.28),transparent 60%),radial-gradient(ellipse 70% 70% at 10% 90%,rgba(60,70,255,.55),transparent 65%),linear-gradient(160deg,#04030c 0%,#0b0a2e 55%,#1a0b4d 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .deco{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .hero .tag{display:inline-block;font-size:13px;letter-spacing:.08em;border:1px solid rgba(255,255,255,.45);border-radius:99px;padding:3px 12px;margin-bottom:14px}
-.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.25;margin:0 0 14px}
-.hero p.lead{max-width:680px;margin:0 0 26px;color:#e8e4ff;font-size:17px}
+.hero h1{margin:0 0 16px;line-height:1.15}
+.hero h1 .h1a{display:inline-block;font-size:clamp(34px,7vw,64px);font-weight:900;letter-spacing:.01em;padding-bottom:10px;border-bottom:6px solid transparent;border-image:linear-gradient(90deg,#27f58a,#f6e84a,#ff9a3d,#ff3dc8,#7a5cff) 1}
+.hero h1 .h1b{display:block;margin-top:14px;font-size:clamp(20px,3.6vw,34px);font-weight:800;background:linear-gradient(90deg,#7df9ff,#c9a4ff,#ff7ad9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{max-width:640px;margin:0 0 26px;color:#e8e4ff;font-size:17px}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 14px}
 .fact b{display:block;font-size:12px;font-weight:500;color:#cfc6ff}
@@ -62,7 +66,10 @@ h2{font-size:clamp(22px,3.4vw,30px);line-height:1.35;margin:4px 0 10px}
 .tabs{display:flex;gap:8px;margin-bottom:14px}
 .tabs button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 18px;font-weight:700;font-size:14px;cursor:pointer;color:var(--sub)}
 .tabs button.on{background:var(--hot);color:#fff;border-color:var(--hot)}
-.panel{display:none}.panel.on{display:block}
+.panel{display:none}
+.panel.on{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:start}
+.poster{margin:0}.poster img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#e5def9;aspect-ratio:4/5;object-fit:cover}.poster figcaption{font-size:12px;color:var(--sub);margin-top:6px}
+
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;font-weight:700}
 .chip.dim{border-style:dashed;color:var(--sub);font-weight:500;font-size:13px}
@@ -96,12 +103,14 @@ details[open] summary::after{content:"－"}
 details p{margin:0 0 14px;color:var(--sub)}
 footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13px}
 @media(max-width:820px){
+ .panel.on{grid-template-columns:1fr}.poster{max-width:320px}
  .facts{grid-template-columns:1fr 1fr}
  .grid{grid-template-columns:1fr 1fr}
  .feat{grid-template-columns:1fr}.feat .thumb{min-height:0;aspect-ratio:16/9}
  .two{grid-template-columns:1fr}
 }
 @media(max-width:520px){
+ .hero .deco{opacity:.2}
  .grid{grid-template-columns:1fr}
  .hero{padding:40px 0 34px}
 }
@@ -110,9 +119,28 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
 <body>
 
 <header class="hero">
+ <svg class="deco" viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+  <defs>
+   <linearGradient id="gw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a3cff" stop-opacity=".0"/><stop offset=".5" stop-color="#6a3dff" stop-opacity=".55"/><stop offset="1" stop-color="#ff3dc8" stop-opacity=".35"/></linearGradient>
+   <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7df9ff"/><stop offset=".45" stop-color="#8a5cff"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient>
+   <linearGradient id="gd2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9ae8"/><stop offset="1" stop-color="#4a3cff"/></linearGradient>
+   <linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27f58a"/><stop offset="1" stop-color="#7df9ff"/></linearGradient>
+  </defs>
+  <path d="M0 360 C220 280 380 470 620 400 C860 330 980 250 1200 300 L1200 520 L0 520Z" fill="url(#gw)"/>
+  <path d="M0 410 C260 330 420 500 680 440 C900 390 1020 330 1200 360" fill="none" stroke="#a98bff" stroke-opacity=".5" stroke-width="2"/>
+  <g transform="translate(930 150)">
+   <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="url(#gd)" opacity=".9"/>
+   <polygon points="0,-90 78,-45 0,0 -78,-45" fill="#fff" opacity=".28"/>
+   <polygon points="0,0 78,-45 78,45 0,90" fill="#1b0f5e" opacity=".28"/>
+   <ellipse cx="0" cy="12" rx="128" ry="26" fill="none" stroke="#e9deff" stroke-opacity=".7" stroke-width="3" transform="rotate(-12)"/>
+  </g>
+  <g transform="translate(1085 330)"><polygon points="0,-46 12,-12 46,0 12,12 0,46 -12,12 -46,0 -12,-12" fill="url(#gs)"/></g>
+  <g transform="translate(790 70)"><polygon points="0,-30 8,-8 30,0 8,8 0,30 -8,8 -30,0 -8,-8" fill="url(#gd2)"/></g>
+  <g transform="translate(1130 90)"><polygon points="0,-20 5,-5 20,0 5,5 0,20 -5,5 -20,0 -5,-5" fill="#fff" opacity=".85"/></g>
+ </svg>
  <div class="wrap">
   <span class="tag">MELON MUSIC AWARDS 2026</span>
-  <h1>2026 MMA頒獎典禮專題<br>首度連辦兩天，卡司、投票、直播一頁看懂</h1>
+  <h1><span class="h1a">MMA 2026頒獎典禮</span><span class="h1b">卡司、投票、直播一次掌握</span></h1>
   <p class="lead">第18屆MMA以「K-POP CONNECT: The New Pulse」為口號，11月14日至15日在首爾高尺天空巨蛋登場，兩天共26組藝人接力演出，新增Global TOP10跨國評選，台灣觀眾可透過TVBS 42台與CATCHPLAY TV同步收看。</p>
   <div class="facts">
    <div class="fact"><b>日期</b><span>11/14（六）至11/15（日）</span></div>
@@ -156,26 +184,35 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
  <div class="pn">PART 2</div>
  <h2>2026 MMA卡司名單：兩天26組藝人陣容，aespa、IVE、CORTIS接力登場</h2>
  <p class="intro">Day1由I.O.I、aespa、ATEEZ領軍，Day2由IVE、NCT 127、PLAVE壓軸，NCT 127與NCT DREAM同步迎來出道10週年。</p>
+ <div style="max-width:720px;margin:0 0 24px">
+  <div class="video"><iframe src="https://www.youtube.com/embed/U02IYEmB-Xk" title="2026 MMA倒數一個月! 「26組卡司爭霸」ATEEZ.aespa.CORTIS都來了" loading="lazy" allowfullscreen></iframe></div>
+  <p class="vcap">2026 MMA倒數一個月! 「26組卡司爭霸」ATEEZ.aespa.CORTIS都來了</p>
+ </div>
  <div class="tabs" role="tablist">
   <button class="on" data-t="d1">Day1　11月14日</button>
   <button data-t="d2">Day2　11月15日</button>
  </div>
  <div class="panel on" id="d1">
+  <div>
   <div class="chips">
    <span class="chip">I.O.I</span><span class="chip">AEN</span><span class="chip">aespa</span><span class="chip">ATEEZ</span><span class="chip">Dragon Pony</span><span class="chip">HANA</span><span class="chip">Hearts2Hearts</span><span class="chip">IDID</span><span class="chip">NCT DREAM</span><span class="chip">RESCENE</span><span class="chip">RIIZE</span><span class="chip">TUIDE</span><span class="chip">TWS</span><span class="chip">YENA</span>
   </div>
   <p class="note">共14組，依英文字母順序排列，非實際演出順序，以主辦單位公告為準。</p>
+  </div>
+  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a13d63-ab98-7178-ae64-f02f1d675807.jpg?w=1024&h=1280" alt="2026 MMA Day1卡司海報" loading="lazy" onerror="this.parentNode.remove()"><figcaption>2026 MMA Day1卡司公布。（圖／翻攝自官網）</figcaption></figure>
  </div>
  <div class="panel" id="d2">
+  <div>
   <div class="chips">
    <span class="chip">82MAJOR</span><span class="chip">ILLIT</span><span class="chip">ALPHA DRIVE ONE</span><span class="chip">AND2BLE</span><span class="chip">CORTIS</span><span class="chip">hrtz.wav</span><span class="chip">IVE</span><span class="chip">KiiiKiii</span><span class="chip">LNGSHOT</span><span class="chip">NCT 127</span><span class="chip">NCT WISH</span><span class="chip">PLAVE</span>
   </div>
   <p class="note">共12組，依英文字母順序排列，非實際演出順序，以主辦單位公告為準。</p>
+  </div>
+  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a13d64-58aa-735c-add8-c0708cc1d376.jpg?w=1024&h=1280" alt="2026 MMA Day2卡司海報" loading="lazy" onerror="this.parentNode.remove()"><figcaption>2026 MMA Day2卡司公布。（圖／翻攝自官網）</figcaption></figure>
  </div>
 
  <h3 style="margin:26px 0 6px">藝人焦點系列（每日一則，10/29至11/3）</h3>
  <div class="grid">
-  <div class="slot"><span class="st">待補</span><b>卡司海報圖（Day1、Day2）</b><small>官方卡司海報兩張並排，懶人包內已有兩張圖可沿用</small></div>
   <div class="slot"><span class="st">10/29</span><b>I.O.I合體：等了9年的回憶殺</b><small>有生之年系列，國民女團《MMA 2026》重聚</small></div>
   <div class="slot"><span class="st">10/30</span><b>NCT DREAM、NCT 127：SM雙王牌迎10週年</b><small>NCT DREAM全員續約，NCT 127連2天鎮場</small></div>
   <div class="slot"><span class="st">10/31</span><b>女團大戰：aespa、IVE、ILLIT</b><small>音源女王正面對決，年度大賞獎落誰家</small></div>
@@ -221,16 +258,15 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
  <div class="pn">PART 4</div>
  <h2>2026 MMA直播哪裡看：台灣由TVBS 42台與CATCHPLAY TV同步轉播</h2>
  <p class="intro">兩天都從下午4點起轉播星光紅毯，5點接續正式演出，與首爾無時差同步。</p>
- <div class="two">
-  <div>
-   <div class="video"><iframe src="https://www.youtube.com/embed/U02IYEmB-Xk" title="待補影片標題" loading="lazy" allowfullscreen></iframe></div>
-   <p class="vcap">影片標題：待補（影片頁面暫時無法讀取，請提供實際標題）</p>
+ <a class="feat" href="https://news.tvbs.com.tw/entertainment/jk-pop/4041885" target="_blank" rel="noopener">
+  <div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a17b9a-3ffc-7394-a74e-45d5f3b1b379.png?w=800&h=450&t=16x9" alt="TVBS 42全球獨家電視直播MMA 2026" onerror="this.remove()"></div>
+  <div class="body">
+   <span class="kicker">直播資訊</span>
+   <h3>K-Pop 粉絲嗨翻！TVBS 42 全球獨家電視直播《MMA 2026》連兩天狂歡</h3>
+   <p>兩天都從下午4點起轉播星光紅毯，5點接續正式演出，台灣與首爾無時差同步。</p>
+   <span class="btn">閱讀直播資訊</span>
   </div>
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/4041885" target="_blank" rel="noopener">
-   <div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a17b9a-3ffc-7394-a74e-45d5f3b1b379.png?w=800&h=450&t=16x9" alt="TVBS 42全球獨家電視直播MMA 2026" onerror="this.remove()"></div>
-   <div class="body"><span class="kicker">直播資訊</span><h3>K-Pop 粉絲嗨翻！TVBS 42 全球獨家電視直播《MMA 2026》連兩天狂歡</h3></div>
-  </a>
- </div>
+ </a>
  <div class="tw" style="margin-top:20px"><table class="tbl">
   <tr><th>地區</th><th>直播平台</th></tr>
   <tr class="hl"><td>台灣</td><td>TVBS 42台、CATCHPLAY TV（紅毯16:00起，正式演出17:00起）</td></tr>
@@ -284,14 +320,12 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
  <h2>延伸議題包：年末頒獎典禮與韓流演唱會情報</h2>
  <p class="intro">追完MMA，接著看年末其他典禮與演唱會搶票資訊。</p>
  <div class="grid">
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/music/4009376" target="_blank" rel="noopener"><div class="thumb"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 TIMA國際音樂大賞》aespa、Stray Kids、太妍34組卡司陣容、演出時間與門票交通攻略</h3></div></a>
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/4019534" target="_blank" rel="noopener"><div class="thumb"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>AAA搶票攻略2026》9/19全面開賣！拓元售票時間、高雄世運票價座位圖總整理</h3></div></a>
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/2986130" target="_blank" rel="noopener"><div class="thumb"></div><div class="body"><span class="kicker">演唱會</span><h3>2026演唱會資訊》BIGBANG、BTS、BABYMONSTER！台灣演唱會時間總整理</h3></div></a>
-  <a class="card" href="https://news.tvbs.com.tw/entertainment/movies/4029135" target="_blank" rel="noopener"><div class="thumb"></div><div class="body"><span class="kicker">同期頒獎</span><h3>2026金馬獎懶人包》第63屆完整入圍名單出爐！典禮時間、主持人一次看</h3></div></a>
-  <div class="slot"><span class="st">待補</span><b>藝人專題卡片</b><small>aespa、IVE、CORTIS等個別藝人新聞包</small></div>
-  <div class="slot"><span class="st">待補</span><b>BABYMONSTER台北演唱會等搶票文</b><small>依編輯規劃挑選</small></div>
+  <a class="card" href="https://news.tvbs.com.tw/entertainment/music/4009376" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a01860-d7f8-7323-bcbd-e530902c7390.jpg?w=1067&h=600&t=16x9&c=0,0,1200,675&w=800&h=450" alt="2026 TIMA國際音樂大賞" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>2026 TIMA國際音樂大賞》aespa、Stray Kids、太妍34組卡司陣容、演出時間與門票交通攻略</h3></div></a>
+  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/4019534" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a083f0-40f4-70aa-a359-0e7853583fed.jpg?w=1067&h=600&t=16x9&c=1,0,995,559&w=800&h=450" alt="AAA搶票攻略2026" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">頒獎典禮</span><h3>AAA搶票攻略2026》9/19全面開賣！拓元售票時間、高雄世運票價座位圖總整理</h3></div></a>
+  <a class="card" href="https://news.tvbs.com.tw/entertainment/jk-pop/2986130" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a03712-6062-7125-9c60-12b194b62f10.jpg?w=1067&h=600&t=16x9&c=0,0,1200,675&w=800&h=450" alt="2026演唱會資訊" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">演唱會</span><h3>2026演唱會資訊》BIGBANG、BTS、BABYMONSTER！台灣演唱會時間總整理</h3></div></a>
+  <a class="card" href="https://news.tvbs.com.tw/entertainment/movies/4029135" target="_blank" rel="noopener"><div class="thumb"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a0ec30-d4ab-736d-aee2-29b8159bb37d.jpg?w=1067&h=600&t=16x9&c=0,0,1200,675&w=800&h=450" alt="2026金馬獎懶人包" loading="lazy" onerror="this.remove()"></div><div class="body"><span class="kicker">同期頒獎</span><h3>2026金馬獎懶人包》第63屆完整入圍名單出爐！典禮時間、主持人一次看</h3></div></a>
  </div>
- <p class="note">延伸文章卡片尚未抓取主圖，上線前需逐篇補圖與核對標題。</p>
+ <p class="note">卡片圖片為各篇正文第一張配圖，可能與文章主圖不同。</p>
 </section>
 
 </main>
