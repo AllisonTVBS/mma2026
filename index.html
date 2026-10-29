@@ -114,29 +114,66 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
  .grid{grid-template-columns:1fr}
  .hero{padding:40px 0 34px}
 }
+
+/* v2 彩度與透明感 */
+:root{--hot:#7b3cff;--hot2:#ff2fd0;--rb:linear-gradient(90deg,#27f58a,#f6e84a,#ff9a3d,#ff2fd0,#7b3cff,#19e6ff)}
+body{background:#f4f2ff}
+.hero{background:radial-gradient(ellipse 55% 70% at 8% 12%,rgba(25,230,255,.55),transparent 62%),radial-gradient(ellipse 60% 80% at 62% 8%,rgba(123,60,255,.65),transparent 65%),radial-gradient(ellipse 55% 80% at 98% 45%,rgba(255,47,208,.6),transparent 62%),radial-gradient(ellipse 50% 50% at 40% 105%,rgba(255,178,61,.45),transparent 65%),linear-gradient(160deg,#080320 0%,#150a52 55%,#2a0a66 100%)}
+.hero .tag{border:0;color:#fff;background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(255,255,255,.1));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55)}
+.hero h1 .h1a{text-shadow:0 0 28px rgba(255,95,224,.55),0 0 60px rgba(25,230,255,.35);border-bottom-width:8px;border-image:var(--rb) 1}
+.hero h1 .h1b{background:linear-gradient(90deg,#9ff6ff,#fff 40%,#ffb3ee);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 12px rgba(255,255,255,.25))}
+.hero p.lead{color:#f1ecff}
+.fact{background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(255,255,255,.1));border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 30px rgba(20,0,80,.25)}
+.fact b{color:#e8e0ff}
+nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
+.pn{background:linear-gradient(90deg,#7b3cff,#ff2fd0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn,.tabs button.on{background:linear-gradient(135deg,#7b3cff,#ff2fd0);border-color:transparent;box-shadow:0 6px 16px rgba(123,60,255,.35)}
+.card,.box,.feat,.chip,details{border-color:#e4defc;box-shadow:0 4px 18px rgba(123,60,255,.07)}
+.card:hover{box-shadow:0 12px 28px rgba(123,60,255,.22)}
+.chip{background:linear-gradient(#fff,#f7f3ff)}
+.thumb{background:linear-gradient(135deg,#c9f6ff,#e5d4ff 50%,#ffd0f2)}
+.tbl th{background:linear-gradient(90deg,#e3f8ff,#ece4ff,#ffe3f6)}
+.slot{border-color:#b9a4ff}
+.tl div::before{background:linear-gradient(90deg,#19e6ff,#7b3cff,#ff2fd0)}
+.tl div::after{background:linear-gradient(135deg,#7b3cff,#ff2fd0)}
 </style>
 </head>
 <body>
 
 <header class="hero">
- <svg class="deco" viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+ <svg class="deco" viewBox="0 0 1200 560" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
   <defs>
-   <linearGradient id="gw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a3cff" stop-opacity=".0"/><stop offset=".5" stop-color="#6a3dff" stop-opacity=".55"/><stop offset="1" stop-color="#ff3dc8" stop-opacity=".35"/></linearGradient>
-   <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7df9ff"/><stop offset=".45" stop-color="#8a5cff"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient>
-   <linearGradient id="gd2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9ae8"/><stop offset="1" stop-color="#4a3cff"/></linearGradient>
-   <linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27f58a"/><stop offset="1" stop-color="#7df9ff"/></linearGradient>
+   <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#19e6ff"/><stop offset=".3" stop-color="#4b6bff"/><stop offset=".6" stop-color="#b43cff"/><stop offset=".85" stop-color="#ff2fd0"/><stop offset="1" stop-color="#ffb23d"/></linearGradient>
+   <linearGradient id="band2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#27f58a" stop-opacity=".0"/><stop offset=".4" stop-color="#19e6ff" stop-opacity=".7"/><stop offset=".75" stop-color="#ff7ad9" stop-opacity=".8"/><stop offset="1" stop-color="#ffe14a" stop-opacity=".7"/></linearGradient>
+   <linearGradient id="f1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ff6ff"/><stop offset=".5" stop-color="#7a6bff"/><stop offset="1" stop-color="#ff5fe0"/></linearGradient>
+   <linearGradient id="f2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#b9a4ff"/><stop offset="1" stop-color="#37d8ff"/></linearGradient>
+   <linearGradient id="f3" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff3dc8"/><stop offset="1" stop-color="#ffb23d"/></linearGradient>
+   <linearGradient id="f4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27f58a"/><stop offset="1" stop-color="#19e6ff"/></linearGradient>
+   <radialGradient id="orb" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".25" stop-color="#c9f6ff" stop-opacity=".45"/><stop offset=".7" stop-color="#8a6bff" stop-opacity=".25"/><stop offset="1" stop-color="#ff5fe0" stop-opacity=".5"/></radialGradient>
+   <radialGradient id="orb2" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".3" stop-color="#ffe0f6" stop-opacity=".4"/><stop offset="1" stop-color="#ff8a3d" stop-opacity=".45"/></radialGradient>
+   <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
   </defs>
-  <path d="M0 360 C220 280 380 470 620 400 C860 330 980 250 1200 300 L1200 520 L0 520Z" fill="url(#gw)"/>
-  <path d="M0 410 C260 330 420 500 680 440 C900 390 1020 330 1200 360" fill="none" stroke="#a98bff" stroke-opacity=".5" stroke-width="2"/>
-  <g transform="translate(930 150)">
-   <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="url(#gd)" opacity=".9"/>
-   <polygon points="0,-90 78,-45 0,0 -78,-45" fill="#fff" opacity=".28"/>
-   <polygon points="0,0 78,-45 78,45 0,90" fill="#1b0f5e" opacity=".28"/>
-   <ellipse cx="0" cy="12" rx="128" ry="26" fill="none" stroke="#e9deff" stroke-opacity=".7" stroke-width="3" transform="rotate(-12)"/>
+  <path d="M0 400 C220 300 400 500 640 430 C880 360 1000 270 1200 330 L1200 560 L0 560Z" fill="url(#band)" opacity=".55"/>
+  <path d="M0 450 C260 360 440 540 700 470 C920 410 1040 350 1200 390 L1200 560 L0 560Z" fill="url(#band2)" opacity=".8"/>
+  <path d="M0 395 C220 295 400 495 640 425 C880 355 1000 265 1200 325" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/>
+  <g transform="translate(900 170)">
+   <ellipse cx="0" cy="8" rx="150" ry="150" fill="url(#orb)" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/>
+   <ellipse cx="-40" cy="-60" rx="60" ry="26" fill="#fff" opacity=".35" transform="rotate(-28 -40 -60)"/>
   </g>
-  <g transform="translate(1085 330)"><polygon points="0,-46 12,-12 46,0 12,12 0,46 -12,12 -46,0 -12,-12" fill="url(#gs)"/></g>
-  <g transform="translate(790 70)"><polygon points="0,-30 8,-8 30,0 8,8 0,30 -8,8 -30,0 -8,-8" fill="url(#gd2)"/></g>
-  <g transform="translate(1130 90)"><polygon points="0,-20 5,-5 20,0 5,5 0,20 -5,5 -20,0 -5,-5" fill="#fff" opacity=".85"/></g>
+  <g transform="translate(905 200)">
+   <g filter="url(#glow)" opacity=".7"><polygon points="0,-80 70,-40 70,40 0,80 -70,40 -70,-40" fill="#ff5fe0"/></g>
+   <polygon points="0,-80 70,-40 70,40 0,80 -70,40 -70,-40" fill="url(#f1)"/>
+   <polygon points="0,-80 70,-40 0,0 -70,-40" fill="#fff" opacity=".5"/>
+   <polygon points="-70,-40 0,0 0,80 -70,40" fill="url(#f2)" opacity=".7"/>
+   <polygon points="70,-40 0,0 0,80 70,40" fill="#3a1b9a" opacity=".35"/>
+   <polyline points="0,-80 0,0" stroke="#fff" stroke-opacity=".8" stroke-width="1.5" fill="none"/>
+   <ellipse cx="0" cy="12" rx="118" ry="24" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="3.5" transform="rotate(-14)"/>
+  </g>
+  <g transform="translate(1085 360)"><g filter="url(#glow)" opacity=".8"><polygon points="0,-60 14,-14 60,0 14,14 0,60 -14,14 -60,0 -14,-14" fill="#27f58a"/></g><polygon points="0,-56 13,-13 56,0 13,13 0,56 -13,13 -56,0 -13,-13" fill="url(#f4)"/></g>
+  <g transform="translate(760 90)"><g filter="url(#glow)" opacity=".8"><polygon points="0,-40 10,-10 40,0 10,10 0,40 -10,10 -40,0 -10,-10" fill="#ff3dc8"/></g><polygon points="0,-38 9,-9 38,0 9,9 0,38 -9,9 -38,0 -9,-9" fill="url(#f3)"/></g>
+  <g transform="translate(1110 90)"><polygon points="0,-24 6,-6 24,0 6,6 0,24 -6,6 -24,0 -6,-6" fill="#fff"/></g>
+  <circle cx="1060" cy="250" r="38" fill="url(#orb2)" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="1150" cy="440" r="20" fill="url(#orb2)" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>
  </svg>
  <div class="wrap">
   <span class="tag">MELON MUSIC AWARDS 2026</span>
@@ -195,7 +232,7 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
   </div>
   <p class="note">共14組，依英文字母順序排列，非實際演出順序，以主辦單位公告為準。</p>
   </div>
-  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a13d63-ab98-7178-ae64-f02f1d675807.jpg?w=1024&h=1280" alt="2026 MMA Day1卡司海報" loading="lazy" onerror="this.parentNode.remove()"><figcaption>2026 MMA Day1卡司公布。（圖／翻攝自官網）</figcaption></figure>
+  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a17b9b-f254-7335-a542-14b1dd926bcc.png?w=1024&h=1280" alt="2026 MMA Day1卡司海報" loading="lazy" onerror="this.parentNode.remove()"></figure>
  </div>
  <div class="panel" id="d2">
   <div>
@@ -204,7 +241,7 @@ footer{margin-top:56px;background:#14161f;color:#aab;padding:28px 0;font-size:13
   </div>
   <p class="note">共12組，依英文字母順序排列，非實際演出順序，以主辦單位公告為準。</p>
   </div>
-  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a13d64-58aa-735c-add8-c0708cc1d376.jpg?w=1024&h=1280" alt="2026 MMA Day2卡司海報" loading="lazy" onerror="this.parentNode.remove()"><figcaption>2026 MMA Day2卡司公布。（圖／翻攝自官網）</figcaption></figure>
+  <figure class="poster"><img src="https://news-images.tvbs.com.tw/api/v1/image/01a17b9c-41c9-7193-9927-385759e97435.png?w=1024&h=1280" alt="2026 MMA Day2卡司海報" loading="lazy" onerror="this.parentNode.remove()"></figure>
  </div>
 
  <div style="max-width:720px;margin:24px 0 0">
