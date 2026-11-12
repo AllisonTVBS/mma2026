@@ -237,6 +237,12 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
 .lv-dots i{width:8px;height:8px;border-radius:50%;background:#d8d0f5;display:block;cursor:pointer}
 .lv-dots i.on{background:var(--hot);width:22px;border-radius:99px}
 @media(max-width:520px){.lv-page{grid-template-columns:1fr 1fr;gap:12px}.lv-page .card h3{font-size:16px}.lv-page .card .body{padding:10px 12px 12px}}
+.lv-tabs{justify-content:flex-start;margin:0 0 14px}
+.lv-page .thumb.vp{position:relative;cursor:pointer;background:#14161f}
+.lv-page .thumb.vp::after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;padding-left:4px;pointer-events:none}
+.lv-page .thumb.vp.go::after{display:none}
+.lv-page .thumb.vp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lv-page .card.vc:hover{transform:none}
 </style>
 </head>
 <body>
@@ -322,12 +328,13 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
 <section id="live" hidden>
  <div class="lv-head"><span class="lv-badge">LIVE</span></div>
  <h2>2026 MMA現場即時：紅毯、舞台與得獎新聞</h2>
- <div class="car lvcar" id="lvCar">
+ <div class="tabs lv-tabs" id="lvDays"><button class="on" data-d="Day1">Day1 11/14</button><button data-d="Day2">Day2 11/15</button></div>
+ <div class="car lvcar" id="lvNCar">
   <button class="car-btn prev" type="button" aria-label="上一頁">&#8249;</button>
-  <div class="lv-track" id="lvTrack" tabindex="0" role="region" aria-label="2026 MMA即時新聞"></div>
+  <div class="lv-track" id="lvNTrack" tabindex="0" role="region" aria-label="2026 MMA即時新聞"></div>
   <button class="car-btn next" type="button" aria-label="下一頁">&#8250;</button>
  </div>
- <div class="lv-dots" id="lvDots"></div>
+ <div class="lv-dots" id="lvNDots"></div>
  <a class="feat" id="lvAward" href="#" target="_blank" rel="noopener" style="margin-top:22px" hidden>
   <div class="thumb" id="lvAwardImg"></div>
   <div class="body">
@@ -337,6 +344,15 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
    <span class="btn">查看得獎名單</span>
   </div>
  </a>
+ <div id="lvVWrap" hidden>
+  <h3 class="lv-sub">現場影音</h3>
+  <div class="car lvcar" id="lvVCar">
+   <button class="car-btn prev" type="button" aria-label="上一頁">&#8249;</button>
+   <div class="lv-track" id="lvVTrack" tabindex="0" role="region" aria-label="2026 MMA現場影音"></div>
+   <button class="car-btn next" type="button" aria-label="下一頁">&#8250;</button>
+  </div>
+  <div class="lv-dots" id="lvVDots"></div>
+ </div>
 </section>
 
 <!-- Part2 -->
@@ -525,10 +541,11 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
   // 上線時填入試算表「發布到網路」的CSV網址（三個分頁各一個）；留空則區塊永遠隱藏
   settings:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSNuVR5784lWy6BJxxbi78sLZTBHoia2jeh92pHHJ5XH9vZlC4GG_jjsZWzyoNp9V8zjtJJtzM4W2MY/pub?gid=0&single=true&output=csv',
   news:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSNuVR5784lWy6BJxxbi78sLZTBHoia2jeh92pHHJ5XH9vZlC4GG_jjsZWzyoNp9V8zjtJJtzM4W2MY/pub?gid=1&single=true&output=csv',
+  video:'', // 「影音」分頁發布後的CSV網址
   refreshSec:60
  };
  var DEMO=/[?&]livedemo=1/.test(location.search);
- var LV={cfg:{},news:[],vid:[],day:'Day1',tag:'',lim:8,vidDone:false};
+ var LV={cfg:{},news:[],vid:[],day:'Day1'};
  function csv(t){var r=[],row=[],c='',q=false,i=0;t=t.replace(/^﻿/,'');
   for(;i<t.length;i++){var ch=t[i];
    if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
@@ -540,38 +557,47 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
  function safe(u){return /^https?:\/\//i.test(u||'')?u:''}
  function get(u){return fetch(u+(u.indexOf('?')>-1?'&':'?')+'_='+Date.now()).then(function(r){return r.text()}).then(csv)}
  function yid(u){var m=(u||'').match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:''}
- function demoData(){
-  var now=new Date(),pad=function(n){return(n<10?'0':'')+n};
-  var tags=['紅毯','舞台','得獎','話題'],ti=['紅毯星光閃耀！CORTIS、IVE現身首爾','aespa壓軸舞台引爆全場','年度大賞揭曉！得主上台感言淚崩','粉絲徹夜排隊應援，場外人潮直擊','ATEEZ開場舞台直擊','新人獎得主出爐，現場尖叫聲不斷','巨星同框！後台合照曝光','舞台事故？藝人機智應對圈粉','全場大合唱成為名場面','紅毯穿搭一次看'];
-  var n=[];for(var i=0;i<12;i++)n.push({標籤:tags[i%4],標題:ti[i%10],網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',圖片網址:''});
-  return {cfg:{啟用:'是',狀態:'Day1 紅毯進行中',倒數目標:'',得獎文章網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',得獎文章標題:'2026 MMA得獎名單總整理：大賞、新人獎得主一次看',得獎文章圖片網址:''},news:n};
+ function mkCar(id){
+  var car=document.getElementById(id+'Car'),tr=document.getElementById(id+'Track'),dots=document.getElementById(id+'Dots');
+  function sync(){var n=tr.children.length,i=Math.round(tr.scrollLeft/Math.max(tr.clientWidth,1));
+   car.querySelector('.prev').disabled=tr.scrollLeft<=4;car.querySelector('.next').disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;
+   [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i)});dots.style.display=n>1?'flex':'none'}
+  car.querySelector('.prev').addEventListener('click',function(){tr.scrollBy({left:-tr.clientWidth,behavior:'smooth'})});
+  car.querySelector('.next').addEventListener('click',function(){tr.scrollBy({left:tr.clientWidth,behavior:'smooth'})});
+  tr.addEventListener('scroll',sync,{passive:true});window.addEventListener('resize',sync);
+  dots.addEventListener('click',function(e){var d=e.target.closest('i');if(d)tr.scrollTo({left:d.dataset.i*tr.clientWidth,behavior:'smooth'})});
+  return function(items,build,empty){
+   tr.innerHTML='';dots.innerHTML='';
+   if(!items.length){var e=document.createElement('div');e.className='lv-empty';e.textContent=empty;tr.appendChild(e);sync();return}
+   for(var i=0;i<items.length;i+=6){
+    var pg=document.createElement('div');pg.className='lv-page';
+    items.slice(i,i+6).forEach(function(x){pg.appendChild(build(x))});
+    tr.appendChild(pg);var d=document.createElement('i');d.dataset.i=i/6;dots.appendChild(d)}
+   tr.scrollLeft=0;sync()}
  }
- function tagEl(t){var s=document.createElement('span');s.className='lv-tag t-'+t;s.textContent=t;return s}
+ var drawN=mkCar('lvN'),drawV=mkCar('lvV');
+ function newsCard(n){
+  var c=document.createElement('a');c.className='card';c.href=safe(n.網址)||'#';c.target='_blank';c.rel='noopener';
+  var th=document.createElement('div');th.className='thumb';
+  if(safe(n.圖片網址)){var im=document.createElement('img');im.src=n.圖片網址;im.alt=n.標題;im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im)}
+  var b=document.createElement('div');b.className='body';
+  var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';
+  var h=document.createElement('h3');h.textContent=n.標題;
+  b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);return c}
+ function vidCard(v){
+  var id=yid(v.YouTube網址),c=document.createElement('div');c.className='card vc';
+  var th=document.createElement('div');th.className='thumb vp';
+  var im=document.createElement('img');im.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';im.alt=v.標題||'2026 MMA現場影音';im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im);
+  th.addEventListener('click',function(){if(th.classList.contains('go'))return;th.classList.add('go');var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=v.標題||'2026 MMA現場影音';th.innerHTML='';th.appendChild(f)});
+  var b=document.createElement('div');b.className='body';
+  var k=document.createElement('span');k.className='kicker';k.textContent='現場影音';
+  var h=document.createElement('h3');h.textContent=v.標題||'2026 MMA現場影音';
+  b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);return c}
  function renderNews(){
-  var tr=document.getElementById('lvTrack'),dots=document.getElementById('lvDots');tr.innerHTML='';dots.innerHTML='';
-  var a=LV.news.slice().reverse();
-  if(!a.length){var e=document.createElement('div');e.className='lv-empty';e.textContent='典禮進行中，新聞即將更新';tr.appendChild(e);return}
-  for(var i=0;i<a.length;i+=6){
-   var pg=document.createElement('div');pg.className='lv-page';
-   a.slice(i,i+6).forEach(function(n){
-    var c=document.createElement('a');c.className='card';c.href=safe(n.網址)||'#';c.target='_blank';c.rel='noopener';
-    var th=document.createElement('div');th.className='thumb';
-    if(safe(n.圖片網址)){var im=document.createElement('img');im.src=n.圖片網址;im.alt=n.標題;im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im)}
-    var b=document.createElement('div');b.className='body';
-    var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';
-    var h=document.createElement('h3');h.textContent=n.標題;
-    b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);pg.appendChild(c)});
-   tr.appendChild(pg);
-   var d=document.createElement('i');d.dataset.i=i/6;dots.appendChild(d);
-  }
-  lvSync();
+  var a=LV.news.filter(function(n){return n.Day===LV.day}).reverse();
+  drawN(a,newsCard,'這一天的新聞即將更新，請稍後再看');
  }
- function lvSync(){
-  var tr=document.getElementById('lvTrack'),car=document.getElementById('lvCar'),n=tr.children.length,i=Math.round(tr.scrollLeft/Math.max(tr.clientWidth,1));
-  car.querySelector('.prev').disabled=tr.scrollLeft<=4;car.querySelector('.next').disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;
-  [].forEach.call(document.querySelectorAll('#lvDots i'),function(d,k){d.classList.toggle('on',k===i)});
-  document.getElementById('lvDots').style.display=n>1?'flex':'none';
- }
+ function setDay(d){LV.day=d;[].forEach.call(document.querySelectorAll('#lvDays button'),function(b){b.classList.toggle('on',b.dataset.d===d)})}
  function renderAll(){
   var c=LV.cfg,on=c.啟用==='是';
   document.getElementById('live').hidden=!on;document.getElementById('navLive').hidden=!on;
@@ -579,20 +605,28 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
   var aw=document.getElementById('lvAward'),au=safe(c.得獎文章網址);aw.hidden=!au;
   if(au){aw.href=au;document.getElementById('lvAwardT').textContent=c.得獎文章標題||'2026 MMA得獎名單';var ai=document.getElementById('lvAwardImg');ai.innerHTML='';if(safe(c.得獎文章圖片網址)){var im=document.createElement('img');im.src=c.得獎文章圖片網址;im.alt='2026 MMA得獎名單';im.onerror=function(){this.remove()};ai.appendChild(im)}}
   renderNews();
+  var vs=LV.vid.slice().reverse();document.getElementById('lvVWrap').hidden=!vs.length;
+  if(vs.length)drawV(vs,vidCard,'');
  }
+ function apply(cfg,news,vid){
+  var sig=JSON.stringify([cfg,news,vid]);if(sig===LV.sig)return;LV.sig=sig;
+  LV.cfg=cfg;LV.news=news;LV.vid=vid;
+  if(!LV.dayset){var l=news[news.length-1];if(l&&l.Day==='Day2')setDay('Day2');LV.dayset=1}
+  renderAll()}
+ function demoData(){
+  var tags=['紅毯','舞台','得獎','話題'],ti=['紅毯星光閃耀！CORTIS、IVE現身首爾','aespa壓軸舞台引爆全場','年度大賞揭曉！得主上台感言淚崩','粉絲徹夜排隊應援，場外人潮直擊','ATEEZ開場舞台直擊','新人獎得主出爐，現場尖叫聲不斷','巨星同框！後台合照曝光','舞台事故？藝人機智應對圈粉','全場大合唱成為名場面','紅毯穿搭一次看'];
+  var n=[];for(var i=0;i<14;i++)n.push({Day:i<8?'Day1':'Day2',標籤:tags[i%4],標題:ti[i%10],網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',圖片網址:''});
+  var v=[];for(var j=0;j<8;j++)v.push({標題:'現場SOT '+(j+1),YouTube網址:'https://youtu.be/dQw4w9WgXcQ'});
+  apply({啟用:'是',得獎文章網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',得獎文章標題:'2026 MMA得獎名單總整理：大賞、新人獎得主一次看',得獎文章圖片網址:''},n,v)}
  function liveLoad(){
-  if(DEMO&&!LV.cfg.啟用){var d=demoData();LV.cfg=d.cfg;LV.news=d.news;renderAll();return Promise.resolve()}
+  if(DEMO){if(!LV.sig)demoData();return Promise.resolve()}
   if(!LIVE_CFG.settings)return Promise.resolve();
-  return Promise.all([get(LIVE_CFG.settings),LIVE_CFG.news?get(LIVE_CFG.news):[]]).then(function(r){
+  return Promise.all([get(LIVE_CFG.settings),LIVE_CFG.news?get(LIVE_CFG.news):[],LIVE_CFG.video?get(LIVE_CFG.video):[]]).then(function(r){
    var c={};(r[0]||[]).forEach(function(x){if(x[0])c[x[0].trim()]=(x[1]||'').trim()});
-   LV.cfg=c;LV.news=objs(r[1]).filter(function(n){return n.顯示!=='否'&&n.標題});
-   renderAll()}).catch(function(){});
+   apply(c,objs(r[1]).filter(function(n){return n.顯示!=='否'&&n.標題}),objs(r[2]).filter(function(v){return v.顯示!=='否'&&yid(v.YouTube網址)}))
+  }).catch(function(){});
  }
- (function(){var car=document.getElementById('lvCar'),tr=document.getElementById('lvTrack');
-  car.querySelector('.prev').addEventListener('click',function(){tr.scrollBy({left:-tr.clientWidth,behavior:'smooth'})});
-  car.querySelector('.next').addEventListener('click',function(){tr.scrollBy({left:tr.clientWidth,behavior:'smooth'})});
-  tr.addEventListener('scroll',lvSync,{passive:true});window.addEventListener('resize',lvSync);
-  document.getElementById('lvDots').addEventListener('click',function(e){var d=e.target.closest('i');if(d)tr.scrollTo({left:d.dataset.i*tr.clientWidth,behavior:'smooth'})})})();
+ document.getElementById('lvDays').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;LV.dayset=1;setDay(b.dataset.d);renderNews()});
  liveLoad();
  setInterval(function(){if(!document.hidden)liveLoad()},LIVE_CFG.refreshSec*1000);
 })();
