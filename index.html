@@ -178,6 +178,65 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
 @media(max-width:1180px){.car-btn.prev{left:2px}.car-btn.next{right:2px}}
 @media(max-width:820px){.car-track .card{flex-basis:46%}.car-btn{display:none}}
 @media(max-width:520px){.car-track .card{flex-basis:80%}}
+
+/* LIVE 即時區塊 */
+#live[hidden],#navLive[hidden]{display:none}
+#navLive{color:#e11d48}
+#navLive::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#e11d48;margin-right:6px;animation:lvp 1.4s infinite}
+@keyframes lvp{0%{box-shadow:0 0 0 0 rgba(225,29,72,.6)}100%{box-shadow:0 0 0 9px rgba(225,29,72,0)}}
+.lv-head{margin:0 0 4px}
+#live h2{margin-bottom:20px}
+.lv-badge{display:inline-flex;align-items:center;gap:7px;background:#e11d48;color:#fff;font-weight:800;font-size:14px;border-radius:99px;padding:4px 14px;letter-spacing:.06em}
+.lv-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:lvb 1.2s infinite}
+@keyframes lvb{50%{opacity:.25}}
+.lv-status{font-weight:700;font-size:17px}
+.lv-count{color:var(--sub);font-size:15px}
+.lv-plat{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.lv-plat span{font-size:13px;font-weight:700;border:1px solid #e4defc;background:#fff;border-radius:99px;padding:4px 12px}
+.lv-top{display:grid;grid-template-columns:1.25fr 1fr;border-radius:18px;background:#fff;border:1px solid #e4defc;overflow:hidden;box-shadow:0 4px 18px rgba(123,60,255,.07);margin-bottom:18px}
+.lv-top .thumb{aspect-ratio:auto;min-height:230px;position:relative}
+.lv-top .body{padding:22px;display:flex;flex-direction:column;justify-content:center}
+.lv-top h3{font-size:21px;line-height:1.45;margin:6px 0 10px}
+.lv-meta{font-size:13px;color:var(--sub);font-weight:600}
+.lv-tag{display:inline-block;font-size:12px;font-weight:800;border-radius:6px;padding:1px 8px;margin-right:6px;color:#fff;background:#7b3cff}
+.lv-tag.t-紅毯{background:#ff2fd0}.lv-tag.t-舞台{background:#7b3cff}.lv-tag.t-得獎{background:#f59e0b}.lv-tag.t-話題{background:#0ea5e9}
+.lv-bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 12px}
+.lv-bar .tabs{margin:0;justify-content:flex-start}
+.lv-filter{display:flex;gap:6px;flex-wrap:wrap}
+.lv-filter button{font:inherit;font-size:13px;font-weight:700;border:1px solid #e4defc;background:#fff;color:var(--sub);border-radius:99px;padding:4px 13px;cursor:pointer}
+.lv-filter button.on{background:#14161f;color:#fff;border-color:#14161f}
+.lv-list{list-style:none;margin:0;padding:0;background:#fff;border:1px solid #e4defc;border-radius:14px;overflow:hidden}
+.lv-list li{border-top:1px solid var(--line)}
+.lv-list li:first-child{border-top:0}
+.lv-list a{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:13px 16px;align-items:start}
+.lv-list a:hover{background:#faf8ff}
+.lv-list time{font-weight:800;color:var(--hot);font-size:15px;font-variant-numeric:tabular-nums;padding-top:1px}
+.lv-list .tt{font-weight:600;line-height:1.55}
+.lv-empty{padding:26px;text-align:center;color:var(--sub)}
+.lv-more{display:block;margin:12px auto 0;font:inherit;font-weight:700;font-size:14px;border:1px solid #e4defc;background:#fff;color:var(--hot);border-radius:99px;padding:8px 22px;cursor:pointer}
+.lv-award{display:grid;grid-template-columns:auto 1fr auto;gap:6px 16px;align-items:center;margin:22px 0 0;padding:16px 20px;border-radius:16px;background:linear-gradient(120deg,#fff7e0,#ffe9f6);border:1px solid #f6d9a8}
+.lv-award b{font-size:18px}
+.lv-award p{margin:0;color:var(--sub);font-size:14px}
+.lv-award .ic{font-size:30px}
+.lv-sub{font-size:19px;margin:26px 0 12px}
+.lv-vid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lv-v{background:#fff;border:1px solid #e4defc;border-radius:14px;overflow:hidden}
+.lv-v .fr{position:relative;aspect-ratio:16/9;background:#14161f;cursor:pointer}
+.lv-v .fr img,.lv-v .fr iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.lv-v .fr::after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;padding-left:4px}
+.lv-v .fr.go::after{display:none}
+.lv-v .cap{padding:10px 14px 12px;font-weight:600;font-size:15px;line-height:1.5}
+@media(max-width:820px){.lv-top{grid-template-columns:1fr}.lv-top .thumb{min-height:0;aspect-ratio:16/9}.lv-vid{grid-template-columns:1fr 1fr}.lv-plat{margin-left:0}}
+@media(max-width:520px){.lv-vid{grid-template-columns:1fr}.lv-award{grid-template-columns:1fr}.lv-status{font-size:18px}.lv-list a{grid-template-columns:50px 1fr;padding:13px 14px}.lv-list .tt{font-size:17px}.lv-top h3{font-size:20px}.lv-filter button,.lv-plat span,.lv-meta{font-size:14px}}
+.lv-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:16px}
+.lv-track::-webkit-scrollbar{display:none}
+.lv-page{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:start}
+.lv-page .card .kicker span{color:var(--sub);font-weight:600;margin-left:6px}
+.lvcar .car-btn{top:40%}
+.lv-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.lv-dots i{width:8px;height:8px;border-radius:50%;background:#d8d0f5;display:block;cursor:pointer}
+.lv-dots i.on{background:var(--hot);width:22px;border-radius:99px}
+@media(max-width:520px){.lv-page{grid-template-columns:1fr 1fr;gap:12px}.lv-page .card h3{font-size:16px}.lv-page .card .body{padding:10px 12px 12px}}
 </style>
 </head>
 <body>
@@ -232,6 +291,7 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
 
 <nav id="nav"><div class="wrap">
  <a href="#p1" target="_self">懶人包</a>
+ <a href="#live" id="navLive" target="_self" hidden>即時</a>
  <a href="#p2" target="_self">卡司名單</a>
  <a href="#p3" target="_self">投票與評選</a>
  <a href="#p4" target="_self">直播時間</a>
@@ -254,6 +314,27 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
    <h3>2026 MMA卡司名單出爐》CORTIS、aespa、IVE齊聚！直播平台與投票攻略</h3>
    <p>整理MMA 2026時間地點、Day1與Day2演出名單、海外投票教學、直播線上看與年末K-pop頒獎典禮時間表。</p>
    <span class="btn">閱讀完整懶人包</span>
+  </div>
+ </a>
+</section>
+
+<!-- LIVE 即時區塊：由試算表開關控制，預設隱藏 -->
+<section id="live" hidden>
+ <div class="lv-head"><span class="lv-badge">LIVE</span></div>
+ <h2>2026 MMA現場即時：紅毯、舞台與得獎新聞</h2>
+ <div class="car lvcar" id="lvCar">
+  <button class="car-btn prev" type="button" aria-label="上一頁">&#8249;</button>
+  <div class="lv-track" id="lvTrack" tabindex="0" role="region" aria-label="2026 MMA即時新聞"></div>
+  <button class="car-btn next" type="button" aria-label="下一頁">&#8250;</button>
+ </div>
+ <div class="lv-dots" id="lvDots"></div>
+ <a class="feat" id="lvAward" href="#" target="_blank" rel="noopener" style="margin-top:22px" hidden>
+  <div class="thumb" id="lvAwardImg"></div>
+  <div class="body">
+   <span class="kicker">得獎名單｜即時更新</span>
+   <h3 id="lvAwardT">2026 MMA得獎名單</h3>
+   <p>隨典禮進行即時更新，點進文章查看最新得主。</p>
+   <span class="btn">查看得獎名單</span>
   </div>
  </a>
 </section>
@@ -426,12 +507,12 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
  var links=document.querySelectorAll('nav a'),secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
  window.addEventListener('scroll',function(){
   var y=window.scrollY+120,cur=0;
-  secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});
+  secs.forEach(function(s,i){if(s&&!s.hidden&&s.offsetTop<=y)cur=i});
   links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
  },{passive:true});
 
  // 藝人焦點左右滑動
- var car=document.querySelector('.car');
+ var car=document.querySelector('.car:not(.lvcar)');
  if(car){
   var tr=car.querySelector('.car-track'),pv=car.querySelector('.prev'),nx=car.querySelector('.next');
   function upd(){pv.disabled=tr.scrollLeft<=4;nx.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4}
@@ -439,6 +520,81 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
   nx.addEventListener('click',function(){tr.scrollBy({left:tr.clientWidth*0.92,behavior:'smooth'})});
   tr.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
  }
+ // ===== LIVE 即時區塊 =====
+ var LIVE_CFG={
+  // 上線時填入試算表「發布到網路」的CSV網址（三個分頁各一個）；留空則區塊永遠隱藏
+  settings:'', news:'',
+  refreshSec:60
+ };
+ var DEMO=/[?&]livedemo=1/.test(location.search);
+ var LV={cfg:{},news:[],vid:[],day:'Day1',tag:'',lim:8,vidDone:false};
+ function csv(t){var r=[],row=[],c='',q=false,i=0;t=t.replace(/^﻿/,'');
+  for(;i<t.length;i++){var ch=t[i];
+   if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+   else if(ch=='"')q=true;else if(ch==','){row.push(c);c=''}
+   else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;row.push(c);r.push(row);row=[];c=''}
+   else c+=ch}
+  if(c!==''||row.length){row.push(c);r.push(row)}return r}
+ function objs(rows){var h=rows[0]||[];return rows.slice(1).filter(function(r){return r.join('')!==''}).map(function(r){var o={};h.forEach(function(k,i){o[k.trim()]=(r[i]||'').trim()});return o})}
+ function safe(u){return /^https?:\/\//i.test(u||'')?u:''}
+ function get(u){return fetch(u+(u.indexOf('?')>-1?'&':'?')+'_='+Date.now()).then(function(r){return r.text()}).then(csv)}
+ function yid(u){var m=(u||'').match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:''}
+ function demoData(){
+  var now=new Date(),pad=function(n){return(n<10?'0':'')+n};
+  var tags=['紅毯','舞台','得獎','話題'],ti=['紅毯星光閃耀！CORTIS、IVE現身首爾','aespa壓軸舞台引爆全場','年度大賞揭曉！得主上台感言淚崩','粉絲徹夜排隊應援，場外人潮直擊','ATEEZ開場舞台直擊','新人獎得主出爐，現場尖叫聲不斷','巨星同框！後台合照曝光','舞台事故？藝人機智應對圈粉','全場大合唱成為名場面','紅毯穿搭一次看'];
+  var n=[];for(var i=0;i<12;i++)n.push({Day:i<8?'Day1':'Day2',時間:'11/'+(i<8?14:15)+' '+pad(17+(i%7))+':'+pad(5*i%60),標籤:tags[i%4],標題:ti[i%10],網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',圖片網址:''});
+  return {cfg:{啟用:'是',狀態:'Day1 紅毯進行中',倒數目標:'',得獎文章網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',得獎文章標題:'2026 MMA得獎名單總整理：大賞、新人獎得主一次看',得獎文章圖片網址:''},news:n};
+ }
+ function tagEl(t){var s=document.createElement('span');s.className='lv-tag t-'+t;s.textContent=t;return s}
+ function hhmm(t){var m=(t||'').match(/(\d{1,2}):(\d{2})/);return m?m[1].replace(/^(\d)$/,'0$1')+':'+m[2]:''}
+ function renderNews(){
+  var tr=document.getElementById('lvTrack'),dots=document.getElementById('lvDots');tr.innerHTML='';dots.innerHTML='';
+  var a=LV.news.slice().sort(function(x,y){return y.時間<x.時間?-1:y.時間>x.時間?1:0});
+  if(!a.length){var e=document.createElement('div');e.className='lv-empty';e.textContent='典禮進行中，新聞即將更新';tr.appendChild(e);return}
+  for(var i=0;i<a.length;i+=6){
+   var pg=document.createElement('div');pg.className='lv-page';
+   a.slice(i,i+6).forEach(function(n){
+    var c=document.createElement('a');c.className='card';c.href=safe(n.網址)||'#';c.target='_blank';c.rel='noopener';
+    var th=document.createElement('div');th.className='thumb';
+    if(safe(n.圖片網址)){var im=document.createElement('img');im.src=n.圖片網址;im.alt=n.標題;im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im)}
+    var b=document.createElement('div');b.className='body';
+    var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';var t=document.createElement('span');t.textContent=hhmm(n.時間);k.appendChild(t);
+    var h=document.createElement('h3');h.textContent=n.標題;
+    b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);pg.appendChild(c)});
+   tr.appendChild(pg);
+   var d=document.createElement('i');d.dataset.i=i/6;dots.appendChild(d);
+  }
+  lvSync();
+ }
+ function lvSync(){
+  var tr=document.getElementById('lvTrack'),car=document.getElementById('lvCar'),n=tr.children.length,i=Math.round(tr.scrollLeft/Math.max(tr.clientWidth,1));
+  car.querySelector('.prev').disabled=tr.scrollLeft<=4;car.querySelector('.next').disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;
+  [].forEach.call(document.querySelectorAll('#lvDots i'),function(d,k){d.classList.toggle('on',k===i)});
+  document.getElementById('lvDots').style.display=n>1?'flex':'none';
+ }
+ function renderAll(){
+  var c=LV.cfg,on=c.啟用==='是';
+  document.getElementById('live').hidden=!on;document.getElementById('navLive').hidden=!on;
+  if(!on)return;
+  var aw=document.getElementById('lvAward'),au=safe(c.得獎文章網址);aw.hidden=!au;
+  if(au){aw.href=au;document.getElementById('lvAwardT').textContent=c.得獎文章標題||'2026 MMA得獎名單';var ai=document.getElementById('lvAwardImg');ai.innerHTML='';if(safe(c.得獎文章圖片網址)){var im=document.createElement('img');im.src=c.得獎文章圖片網址;im.alt='2026 MMA得獎名單';im.onerror=function(){this.remove()};ai.appendChild(im)}}
+  renderNews();
+ }
+ function liveLoad(){
+  if(DEMO&&!LV.cfg.啟用){var d=demoData();LV.cfg=d.cfg;LV.news=d.news;renderAll();return Promise.resolve()}
+  if(!LIVE_CFG.settings)return Promise.resolve();
+  return Promise.all([get(LIVE_CFG.settings),LIVE_CFG.news?get(LIVE_CFG.news):[]]).then(function(r){
+   var c={};(r[0]||[]).forEach(function(x){if(x[0])c[x[0].trim()]=(x[1]||'').trim()});
+   LV.cfg=c;LV.news=objs(r[1]).filter(function(n){return n.顯示!=='否'&&n.標題});
+   renderAll()}).catch(function(){});
+ }
+ (function(){var car=document.getElementById('lvCar'),tr=document.getElementById('lvTrack');
+  car.querySelector('.prev').addEventListener('click',function(){tr.scrollBy({left:-tr.clientWidth,behavior:'smooth'})});
+  car.querySelector('.next').addEventListener('click',function(){tr.scrollBy({left:tr.clientWidth,behavior:'smooth'})});
+  tr.addEventListener('scroll',lvSync,{passive:true});window.addEventListener('resize',lvSync);
+  document.getElementById('lvDots').addEventListener('click',function(e){var d=e.target.closest('i');if(d)tr.scrollTo({left:d.dataset.i*tr.clientWidth,behavior:'smooth'})})})();
+ liveLoad();
+ setInterval(function(){if(!document.hidden)liveLoad()},LIVE_CFG.refreshSec*1000);
 })();
 </script>
 </body>
