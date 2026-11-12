@@ -542,14 +542,13 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
  function demoData(){
   var now=new Date(),pad=function(n){return(n<10?'0':'')+n};
   var tags=['紅毯','舞台','得獎','話題'],ti=['紅毯星光閃耀！CORTIS、IVE現身首爾','aespa壓軸舞台引爆全場','年度大賞揭曉！得主上台感言淚崩','粉絲徹夜排隊應援，場外人潮直擊','ATEEZ開場舞台直擊','新人獎得主出爐，現場尖叫聲不斷','巨星同框！後台合照曝光','舞台事故？藝人機智應對圈粉','全場大合唱成為名場面','紅毯穿搭一次看'];
-  var n=[];for(var i=0;i<12;i++)n.push({Day:i<8?'Day1':'Day2',時間:'11/'+(i<8?14:15)+' '+pad(17+(i%7))+':'+pad(5*i%60),標籤:tags[i%4],標題:ti[i%10],網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',圖片網址:''});
+  var n=[];for(var i=0;i<12;i++)n.push({Day:i<8?'Day1':'Day2',標籤:tags[i%4],標題:ti[i%10],網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',圖片網址:''});
   return {cfg:{啟用:'是',狀態:'Day1 紅毯進行中',倒數目標:'',得獎文章網址:'https://news.tvbs.com.tw/entertainment/jk-pop/4048544',得獎文章標題:'2026 MMA得獎名單總整理：大賞、新人獎得主一次看',得獎文章圖片網址:''},news:n};
  }
  function tagEl(t){var s=document.createElement('span');s.className='lv-tag t-'+t;s.textContent=t;return s}
- function hhmm(t){var m=(t||'').match(/(\d{1,2}):(\d{2})/);return m?m[1].replace(/^(\d)$/,'0$1')+':'+m[2]:''}
  function renderNews(){
   var tr=document.getElementById('lvTrack'),dots=document.getElementById('lvDots');tr.innerHTML='';dots.innerHTML='';
-  var a=LV.news.slice().sort(function(x,y){return y.時間<x.時間?-1:y.時間>x.時間?1:0});
+  var a=LV.news.slice().reverse();
   if(!a.length){var e=document.createElement('div');e.className='lv-empty';e.textContent='典禮進行中，新聞即將更新';tr.appendChild(e);return}
   for(var i=0;i<a.length;i+=6){
    var pg=document.createElement('div');pg.className='lv-page';
@@ -558,7 +557,7 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
     var th=document.createElement('div');th.className='thumb';
     if(safe(n.圖片網址)){var im=document.createElement('img');im.src=n.圖片網址;im.alt=n.標題;im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im)}
     var b=document.createElement('div');b.className='body';
-    var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';var t=document.createElement('span');t.textContent=hhmm(n.時間);k.appendChild(t);
+    var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';
     var h=document.createElement('h3');h.textContent=n.標題;
     b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);pg.appendChild(c)});
    tr.appendChild(pg);
