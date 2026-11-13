@@ -584,7 +584,9 @@ nav a.on,nav a:hover{color:var(--hot);border-image:var(--rb) 1}
   var k=document.createElement('span');k.className='kicker';k.textContent=n.標籤||'即時新聞';
   var h=document.createElement('h3');h.textContent=n.標題;
   b.appendChild(k);b.appendChild(h);c.appendChild(th);c.appendChild(b);return c}
+ function vtitle(t){return(t||'').replace(/\s*@TVBSNEWS01\s*/gi,' ').replace(/[\s|｜\-:：]+$/,'').trim()}
  function vidCard(v){
+  v.標題=vtitle(v.標題);
   var id=yid(v.YouTube網址),c=document.createElement('div');c.className='card vc';
   var th=document.createElement('div');th.className='thumb vp';
   var im=document.createElement('img');im.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';im.alt=v.標題||'2026 MMA現場影音';im.loading='lazy';im.onerror=function(){this.remove()};th.appendChild(im);
